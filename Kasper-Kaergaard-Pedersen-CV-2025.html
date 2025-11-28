@@ -78,26 +78,14 @@
         }
 
         .profile-photo {
-            width: 120px;
-            height: 140px;
+            display: block;          /* avoid inline-image quirks */
+            width: 120px !important;
+            height: 140px !important;
+            max-width: 120px !important;
+            max-height: 140px !important;
             object-fit: cover;
             border: 3px solid white;
             margin-left: 30px;
-        }
-
-
-        .profile-photo-placeholder {
-            width: 120px;
-            height: 140px;
-            background-color: #4a6785;
-            border: 3px solid white;
-            margin-left: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            text-align: center;
-            padding: 10px;
         }
 
         /* Main Content */
