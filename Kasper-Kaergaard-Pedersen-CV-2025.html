@@ -82,8 +82,8 @@
             width: 120px;
             height: 140px;
             object-fit: cover;
-            border: none;                /* or a dark border */
-            border-radius: 8px;          /* soft corners */
+            border: none;
+            border-radius: 8px;
             overflow: hidden;
             margin-left: 30px;
         }
@@ -243,6 +243,25 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+
+            /* Keep headings with their content */
+            .section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .experience-item,
+            .education-item,
+            .conference-item {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Optional: avoid breaking right after the header */
+            .header {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
         }
 
         /* Icons (using Unicode symbols as placeholders) */
@@ -337,7 +356,7 @@
             </section>
 
             <!-- Education Section -->
-            <section class="section">
+            <section class="section section-education">
                 <h2 class="section-title">Education</h2>
                 
                 <div class="education-item">
@@ -352,7 +371,7 @@
 
                 <div class="education-item">
                     <div class="education-header">
-                        <span class="education-title">BSc in Economics & Business Administration, Aarhus University, Aarhus BSS</span>
+                        <span class="education-title">BSc in Economics &amp; Business Administration, Aarhus University, Aarhus BSS</span>
                         <span class="education-date">08/2016 – 06/2021<br>Aarhus</span>
                     </div>
                 </div>
