@@ -78,13 +78,13 @@
         }
 
         .profile-photo {
-            display: block;          /* avoid inline-image quirks */
-            width: 120px !important;
-            height: 140px !important;
-            max-width: 120px !important;
-            max-height: 140px !important;
+            display: block;
+            width: 120px;
+            height: 140px;
             object-fit: cover;
-            border: 3px solid white;
+            border: none;                /* or a dark border */
+            border-radius: 8px;          /* soft corners */
+            overflow: hidden;
             margin-left: 30px;
         }
 
