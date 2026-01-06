@@ -4,29 +4,27 @@ Provides dynamic environment detection and path configuration based on workspace
 Enables code to be deployed across dev, test, and production environments.
 """
 
-import re
-from typing import Dict, Tuple
+from dataclasses import dataclass, field
+from typing import Dict, Optional
 
 
+@dataclass
 class EnvironmentConfig:
     """
     Manages environment-specific configurations and paths.
     Detects environment from Databricks workspace URL and provides appropriate paths.
     """
     
-    def __init__(self, workspace_url: str = None):
-        """
-        Initialize environment configuration.
-        
-        Args:
-            workspace_url: Databricks workspace URL. If None, will attempt to get from spark config.
-        """
-        self.workspace_url = workspace_url
-        self.environment = None
-        self.root_path = None
-        self.catalog_prefix = None
-        
-        if workspace_url:
+    workspace_url: Optional[str] = None
+    environment: Optional[str] = field(default=None, init=False)
+    root_path: Optional[str] = field(default=None, init=False)
+    catalog_prefix: Optional[str] = field(default=None, init=False)
+    paths: Dict[str, str] = field(default_factory=dict, init=False)
+    catalogs: Dict[str, str] = field(default_factory=dict, init=False)
+    
+    def __post_init__(self):
+        """Initialize paths after dataclass initialization."""
+        if self.workspace_url:
             self._detect_environment()
     
     def _detect_environment(self) -> None:

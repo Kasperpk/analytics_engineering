@@ -65,7 +65,7 @@ dataplatform/
 
 ### 1. Environment-Aware Configuration
 
-The `environment_config.py` module automatically detects the environment (dev, test, prod) from the Databricks workspace URL and provides appropriate paths:
+The `environment_config.py` module uses Python `@dataclass` for clean, maintainable configuration management. It automatically detects the environment (dev, test, prod) from the Databricks workspace URL and provides appropriate paths:
 
 ```python
 from environment_config import get_config
@@ -93,7 +93,7 @@ table_name = config.get_full_table_name('silver', 'aarsleff', 'customers')
 
 ### 2. Data Operations
 
-The `data_operations.py` module provides common data operations:
+The `data_operations.py` module (implemented as a `@dataclass`) provides common data operations:
 
 ```python
 from data_operations import DataOperations

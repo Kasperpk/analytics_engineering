@@ -4,6 +4,7 @@ Provides general functions for reading and writing data across the data platform
 Supports Delta Lake operations with various patterns (full load, incremental, SCD2).
 """
 
+from dataclasses import dataclass
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.functions import col, current_timestamp, lit, md5, concat_ws, row_number
 from pyspark.sql.window import Window
@@ -11,19 +12,13 @@ from typing import List, Optional, Dict
 from delta.tables import DeltaTable
 
 
+@dataclass
 class DataOperations:
     """
     Handles common data read/write operations across the platform.
     """
     
-    def __init__(self, spark: SparkSession):
-        """
-        Initialize DataOperations.
-        
-        Args:
-            spark: Active Spark session
-        """
-        self.spark = spark
+    spark: SparkSession
     
     def read_delta(self, path: str = None, table_name: str = None) -> DataFrame:
         """
